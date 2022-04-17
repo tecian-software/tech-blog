@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+service FibonacciService {
+    rpc GetSequence (SequenceRequest) returns (SequenceResponse) {}
+    rpc StreamSequence (SequenceRequest) returns (stream SequenceElement) {}
+}
+  
+message SequenceRequest {
+    int64 count = 1;
+}
+
+message SequenceElement {
+    int64 element = 1;
+    int64 count = 2;
+}
+
+message SequenceResponse {
+    repeated int64 element = 1;
+}
